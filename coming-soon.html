@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VoiceGenius AI - More website sections coming soon. Play our arcade game while you wait!">
+    <meta name="keywords" content="AI calling, outbound calls, voice AI, coming soon, arcade game">
+    <title>VoiceGenius AI | Coming Soon</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%234A90E2'/%3E%3Cpath d='M35,35 L65,65 M35,65 L65,35' stroke='white' stroke-width='8'/%3E%3C/svg%3E">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        .font-merriweather {
+            font-family: "Merriweather", serif;
+            font-optical-sizing: auto;
+        }
+        
+        .font-raleway {
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #4A90E2, #9B59B6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(45deg, #4A90E2, #9B59B6);
+        }
+        
+        .hero-shape {
+            background: linear-gradient(45deg, rgba(74, 144, 226, 0.1), rgba(155, 89, 182, 0.1));
+            position: absolute;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morphing 15s ease-in-out infinite;
+        }
+        
+        @keyframes morphing {
+            0% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            25% {
+                border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+            }
+            50% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+            }
+            75% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+            }
+            100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Game Canvas Styles */
+        #gameCanvas {
+            background-color: black;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .countdown-item {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(155, 89, 182, 0.1));
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1rem;
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .countdown-value {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #4A90E2, #9B59B6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .countdown-label {
+            font-size: 0.875rem;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-raleway">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="h-10 w-10 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-xl">VG</span>
+                            </div>
+                            <div class="absolute bottom-0 right-0 h-3 w-3 bg-purple-500 rounded-full"></div>
+                        </div>
+                        <span class="ml-2 text-xl font-bold gradient-text">VoiceGenius AI</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="/VoiceGenius/index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="/VoiceGenius/dashboard.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
+                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Coming Soon</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="/VoiceGenius./dashboard.html" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">Dashboard</a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="sm:hidden hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="/VoiceGenius/index.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="/VoiceGenius/dashboard.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+                <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Coming Soon</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative pt-10 overflow-hidden">
+        <div class="hero-shape w-3/4 h-3/4 top-24 -right-1/4"></div>
+        <div class="hero-shape w-1/2 h-1/2 -left-1/4 top-48"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12 relative z-10">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold font-merriweather mb-4">
+                    This Section is <span class="gradient-text">Coming Soon</span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                    We're working hard to build more amazing features for VoiceGenius AI. Check back soon to see what's new!
+                </p>
+                
+                <div class="flex justify-center mb-10">
+                    <a href="/VoiceGenius/index.html" class="mx-4 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg">
+                        Back to Home
+                    </a>
+                    <a href="/VoiceGenius/dashboard.html" class="mx-4 px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition duration-300 shadow-lg">
+                        Go to Dashboard
+                    </a>
+                </div>
+                
+                <!-- Countdown Timer -->
+                <div class="flex justify-center space-x-4 mb-12">
+                    <div class="countdown-item">
+                        <div id="days" class="countdown-value">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="hours" class="countdown-value">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="minutes" class="countdown-value">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="seconds" class="countdown-value">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Game Section -->
+            <div class="max-w-3xl mx-auto mb-16">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4 text-center">Play Space Invaders While You Wait</h2>
+                    <p class="text-gray-600 mb-6 text-center">Use left/right arrow keys to move and spacebar to shoot. Destroy all the aliens to win!</p>
+                    
+                    <canvas id="gameCanvas" width="600" height="400" class="rounded-lg"></canvas>
+                    
+                    <div class="mt-6 flex justify-center space-x-4">
+                        <button id="startGame" class="px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Start Game
+                        </button>
+                        <button id="pauseGame" class="px-4 py-2 bg-gray-600 text-white font-medium rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                            Pause Game
+                        </button>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <p id="gameScore" class="text-lg font-bold">Score: 0</p>
+                        <p id="gameLevel" class="text-md">Level: 1</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Email Notification -->
+            <div class="max-w-2xl mx-auto mb-20">
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+                    <h2 class="text-2xl font-bold mb-4">Get Notified When We're Ready</h2>
+                    <p class="text-gray-600 mb-6">Want to know when this section is complete? Leave your email and we'll let you know!</p>
+                    
+                    <form id="notifyForm" class="flex flex-col md:flex-row gap-2">
+                        <input type="email" id="email" placeholder="Your email address" class="px-4 py-2 border border-gray-300 rounded-md flex-grow focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        <button type="submit" class="px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Notify Me
+                        </button>
+                    </form>
+                    
+                    <p id="formMessage" class="mt-4 text-sm hidden"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <div class="h-8 w-8 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-blue-500 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">VG</span>
+                        </div>
+                        <div class="absolute bottom-0 right-0 h-2 w-2 bg-purple-500 rounded-full"></div>
+                    </div>
+                    <span class="ml-2 text-lg font-bold gradient-text">VoiceGenius AI</span>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="./index.html" class="text-gray-300 hover:text-white">Home</a>
+                    <a href="./dashboard.html" class="text-gray-300 hover:text-white">Dashboard</a>
+                    <a href="#" class="text-gray-300 hover:text-white">Coming Soon</a>
+                </div>
+                
+                <div class="mt-4 md:mt-0">
+                    <p class="text-gray-400">&copy; 2025 VoiceGenius AI. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Space Invaders Game Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // Countdown Timer
+            const countdownDate = new Date();
+            countdownDate.setDate(countdownDate.getDate() + 30); // Launch in 30 days
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                if (distance < 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                }
+            }
+            
+            updateCountdown();
+            const countdownTimer = setInterval(updateCountdown, 1000);
+            
+            // Notification Form
+            const notifyForm = document.getElementById('notifyForm');
+            const formMessage = document.getElementById('formMessage');
+            
+            if (notifyForm) {
+                notifyForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('email').value;
+                    
+                    // In a real implementation, you would send this to your server
+                    console.log('Subscription email:', email);
+                    
+                    // Show success message
+                    formMessage.textContent = 'Thanks! We\'ll notify you when we launch.';
+                    formMessage.classList.remove('hidden', 'text-red-500');
+                    formMessage.classList.add('text-green-500');
+                    
+                    // Reset form
+                    notifyForm.reset();
+                });
+            }
+            
+            // Space Invaders Game
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            const startButton = document.getElementById('startGame');
+            const pauseButton = document.getElementById('pauseGame');
+            const scoreElement = document.getElementById('gameScore');
+            const levelElement = document.getElementById('gameLevel');
+            
+            // Game variables
+            let score = 0;
+            let level = 1;
+            let gameRunning = false;
+            let gamePaused = false;
+            let gameLoop;
+            
+            // Player
+            const player = {
+                x: canvas.width / 2 - 25,
+                y: canvas.height - 50,
+                width: 50,
+                height: 20,
+                color: '#4A90E2',
+                speed: 8,
+                dx: 0
+            };
+            
+            // Bullets
+            const bullets = [];
+            const bulletSpeed = 7;
+            
+            // Aliens
+            const aliens = [];
+            const alienRows = 4;
+            const alienCols = 8;
+            const alienWidth = 40;
+            const alienHeight = 30;
+            const alienPadding = 10;
+            const alienSpeed = 1;
+            let alienDirection = 1; // 1 for right, -1 for left
+            const alienDropDistance = 30;
+            
+            // Initialize aliens
+            function createAliens() {
+                aliens.length = 0; // Clear any existing aliens
+                
+                for (let row = 0; row < alienRows; row++) {
+                    for (let col = 0; col < alienCols; col++) {
+                        const alien = {
+                            x: col * (alienWidth + alienPadding) + 50,
+                            y: row * (alienHeight + alienPadding) + 50,
+                            width: alienWidth,
+                            height: alienHeight,
+                            color: getAlienColor(row),
+                            alive: true
+                        };
+                        aliens.push(alien);
+                    }
+                }
+            }
+            
+            function getAlienColor(row) {
+                const colors = ['#E74C3C', '#F1C40F', '#2ECC71', '#9B59B6'];
+                return colors[row % colors.length];
+            }
+            
+            // Keyboard controls
+            const keys = {
+                left: false,
+                right: false,
+                space: false
+            };
+            
+            window.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') keys.left = true;
+                if (e.key === 'ArrowRight') keys.right = true;
+                if (e.key === ' ') keys.space = true;
+                
+                // Prevent scrolling with spacebar
+                if (e.key === ' ' && gameRunning) {
+                    e.preventDefault();
+                }
+            });
+            
+            window.addEventListener('keyup', function(e) {
+                if (e.key === 'ArrowLeft') keys.left = false;
+                if (e.key === 'ArrowRight') keys.right = false;
+                if (e.key === ' ') keys.space = false;
+            });
+            
+            // Helper functions
+            function movePlayer() {
+                player.dx = 0;
+                
+                if (keys.left) {
+                    player.dx = -player.speed;
+                }
+                
+                if (keys.right) {
+                    player.dx = player.speed;
+                }
+                
+                player.x += player.dx;
+                
+                // Keep player within canvas boundaries
+                if (player.x < 0) {
+                    player.x = 0;
+                } else if (player.x + player.width > canvas.width) {
+                    player.x = canvas.width - player.width;
+                }
+            }
+            
+            function shoot() {
+                if (keys.space && bullets.length < 3) { // Limit bullets to 3 at a time
+                    const bullet = {
+                        x: player.x + player.width / 2 - 2,
+                        y: player.y - 10,
+                        width: 4,
+                        height: 10,
+                        color: '#FFFFFF'
+                    };
+                    
+                    bullets.push(bullet);
+                    keys.space = false; // Reset space key to prevent rapid-fire
+                }
+            }
+            
+            function moveBullets() {
+                for (let i = 0; i < bullets.length; i++) {
+                    bullets[i].y -= bulletSpeed;
+                    
+                    // Remove bullets that go off screen
+                    if (bullets[i].y < 0) {
+                        bullets.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
+            
+            function moveAliens() {
+                let hitWall = false;
+                
+                for (const alien of aliens) {
+                    if (!alien.alive) continue;
+                    
+                    alien.x += alienSpeed * alienDirection;
+                    
+                    // Check if any alien hits the walls
+                    if (alien.x <= 0 || alien.x + alienWidth >= canvas.width) {
+                        hitWall = true;
+                    }
+                }
+                
+                // If any alien hit a wall, change direction and move down
+                if (hitWall) {
+                    alienDirection *= -1;
+                    
+                    for (const alien of aliens) {
+                        if (!alien.alive) continue;
+                        alien.y += alienDropDistance;
+                    }
+                }
+                
+                // Check if any alien reached the player's level
+                for (const alien of aliens) {
+                    if (alien.alive && alien.y + alienHeight >= player.y) {
+                        gameOver(false); // Player loses
+                        break;
+                    }
+                }
+            }
+            
+            function checkCollisions() {
+                // Check bullet-alien collisions
+                for (let i = 0; i < bullets.length; i++) {
+                    const bullet = bullets[i];
+                    
+                    for (let j = 0; j < aliens.length; j++) {
+                        const alien = aliens[j];
+                        
+                        if (alien.alive && 
+                            bullet.x < alien.x + alien.width &&
+                            bullet.x + bullet.width > alien.x &&
+                            bullet.y < alien.y + alien.height &&
+                            bullet.y + bullet.height > alien.y) {
+                            
+                            // Collision detected
+                            alien.alive = false;
+                            bullets.splice(i, 1);
+                            i--;
+                            
+                            // Update score
+                            score += 10;
+                            scoreElement.textContent = `Score: ${score}`;
+                            break;
+                        }
+                    }
+                }
+                
+                // Check if all aliens are defeated
+                const allDefeated = aliens.every(alien => !alien.alive);
+                if (allDefeated) {
+                    levelUp();
+                }
+            }
+            
+            function levelUp() {
+                level++;
+                levelElement.textContent = `Level: ${level}`;
+                createAliens();
+                // Increase alien speed with each level
+                alienSpeed += 0.2;
+            }
+            
+            function gameOver(win) {
+                stopGame();
+                
+                // Display game over message
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.font = '32px Raleway, sans-serif';
+                ctx.fillStyle = '#FFFFFF';
+                ctx.textAlign = 'center';
+                
+                if (win) {
+                    ctx.fillText('You Win!', canvas.width / 2, canvas.height / 2);
+                } else {
+                    ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2);
+                }
+                
+                ctx.font = '18px Raleway, sans-serif';
+                ctx.fillText(`Score: ${score}`, canvas.width / 2, canvas.height / 2 + 40);
+                ctx.fillText('Press Start to play again', canvas.width / 2, canvas.height / 2 + 70);
+            }
+            
+            function drawPlayer() {
+                ctx.fillStyle = player.color;
+                ctx.fillRect(player.x, player.y, player.width, player.height);
+                
+                // Draw player's cannon
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(player.x + player.width / 2 - 2, player.y - 10, 4, 10);
+            }
+            
+            function drawBullets() {
+                ctx.fillStyle = '#FFFFFF';
+                for (const bullet of bullets) {
+                    ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+                }
+            }
+            
+            function drawAliens() {
+                for (const alien of aliens) {
+                    if (alien.alive) {
+                        ctx.fillStyle = alien.color;
+                        ctx.fillRect(alien.x, alien.y, alien.width, alien.height);
+                        
+                        // Draw alien eyes
+                        ctx.fillStyle = '#000';
+                        ctx.fillRect(alien.x + 10, alien.y + 8, 5, 5);
+                        ctx.fillRect(alien.x + alien.width - 15, alien.y + 8, 5, 5);
+                    }
+                }
+            }
+            
+            function drawBackground() {
+                // Draw stars
+                ctx.fillStyle = '#FFF';
+                for (let i = 0; i < 100; i++) {
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const size = Math.random() * 2;
+                    ctx.fillRect(x, y, size, size);
+                }
+            }
+            
+            function update() {
+                if (gamePaused) return;
+                
+                // Clear canvas
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw background
+                drawBackground();
+                
+                // Update game objects
+                movePlayer();
+                shoot();
+                moveBullets();
+                moveAliens();
+                checkCollisions();
+                
+                // Draw game objects
+                drawPlayer();
+                drawBullets();
+                drawAliens();
+            }
+            
+            function startGame() {
+                if (!gameRunning) {
+                    // Reset game
+                    score = 0;
+                    level = 1;
+                    scoreElement.textContent = `Score: ${score}`;
+                    levelElement.textContent = `Level: ${level}`;
+                    
+                    createAliens();
+                    
+                    gameRunning = true;
+                    gamePaused = false;
+                    
+                    // Start game loop
+                    gameLoop = setInterval(update, 1000 / 60); // 60 FPS
+                }
+            }
+            
+            function pauseGame() {
+                if (gameRunning) {
+                    gamePaused = !gamePaused;
+                    pauseButton.textContent = gamePaused ? 'Resume Game' : 'Pause Game';
+                }
+            }
+            
+            function stopGame() {
+                gameRunning = false;
+                clearInterval(gameLoop);
+                pauseButton.textContent = 'Pause Game';
+            }
+            
+            // Event listeners for game buttons
+            startButton.addEventListener('click', startGame);
+            pauseButton.addEventListener('click', pauseGame);
+            
+            // Initial setup
+            drawBackground();
+            ctx.font = '24px Raleway, sans-serif';
+            ctx.fillStyle = '#FFFFFF';
+            ctx.textAlign = 'center';
+            ctx.fillText('Space Invaders', canvas.width / 2, canvas.height / 2 - 30);
+            ctx.font = '18px Raleway, sans-serif';
+            ctx.fillText('Press Start to play', canvas.width / 2, canvas.height / 2 + 10);
+        });
+    </script>
+</body>
+</html>

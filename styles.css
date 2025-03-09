@@ -1,0 +1,241 @@
+/* Custom Fonts */
+.font-merriweather {
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+}
+
+.font-raleway {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+}
+
+/* Gradient Styles */
+.gradient-text {
+    background: linear-gradient(45deg, #4A90E2, #9B59B6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gradient-bg {
+    background: linear-gradient(45deg, #4A90E2, #9B59B6);
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Sidebar Styles */
+.sidebar-item {
+    transition: all 0.2s ease;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(74, 144, 226, 0.1);
+}
+
+.sidebar-item.active {
+    background-color: #4A90E2;
+    color: white;
+}
+
+.sidebar-item.active svg {
+    color: white;
+}
+
+/* File Upload Area */
+.file-drop-area {
+    border: 2px dashed #cbd5e0;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.file-drop-area:hover {
+    border-color: #4A90E2;
+    background-color: rgba(74, 144, 226, 0.05);
+}
+
+.file-drop-area.drag-over {
+    border-color: #4A90E2;
+    background-color: rgba(74, 144, 226, 0.1);
+}
+
+/* Animations */
+.animation-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes controlled-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.9; } /* Reduced scale */
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.controlled-pulse {
+    animation: controlled-pulse 1.8s infinite ease-in-out; /* Slower for subtle effect */
+}
+
+
+/* Toast Notifications */
+#notification-toast {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#notification-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Modal Styles */
+.modal-enter {
+    animation: modalFadeIn 0.3s ease forwards;
+}
+
+.modal-exit {
+    animation: modalFadeOut 0.3s ease forwards;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes modalFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .responsive-table-cell {
+        display: block;
+        width: 100%;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    
+    .responsive-table-cell:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: 600;
+        text-align: left;
+    }
+}
+
+/* Loading spinner */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: #4A90E2;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pagination styles */
+.pagination-active {
+    background-color: #4A90E2;
+    color: white;
+}
+
+/* Form styles */
+input:focus, select:focus, textarea:focus {
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* Customize scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c5c5c5;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Table row hover effect */
+tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(74, 144, 226, 0.05);
+}
+
+/* Pre-formatted text for prompt display */
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "Raleway", sans-serif;
+}
+
+/* Chart container styles */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 100% !important;
+}
+
+/* Fix analytics charts to prevent auto-expanding */
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+}

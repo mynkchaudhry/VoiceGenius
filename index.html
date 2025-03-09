@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VoiceGenius AI - Revolutionary outbound calling solutions powered by AI. Generate personalized call scripts and increase your conversion rates with our cutting-edge technology.">
+    <meta name="keywords" content="AI calling, outbound calls, voice AI, sales automation, call scripts, AI personas">
+    <title>VoiceGenius AI | Intelligent Outbound Calling Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%234A90E2'/%3E%3Cpath d='M35,35 L65,65 M35,65 L65,35' stroke='white' stroke-width='8'/%3E%3C/svg%3E">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Three.js for 3D elements -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/VoiceGenius/css/home-styles.css">
+</head>
+<body class="bg-white font-raleway">
+    <!-- 3D Background Container -->
+    <div id="canvas-container"></div>
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="h-10 w-10 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-xl">VG</span>
+                            </div>
+                            <div class="absolute bottom-0 right-0 h-3 w-3 bg-purple-500 rounded-full"></div>
+                        </div>
+                        <span class="ml-2 text-xl font-bold gradient-text">VoiceGenius AI</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="#features" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Features</a>
+                        <a href="#how-it-works" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">How It Works</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="/VoiceGenius/Dashboard.html" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">Dashboard</a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Heroicon name: outline/menu -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div id="mobile-menu" class="sm:hidden hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="#features" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Features</a>
+                <a href="#how-it-works" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">How It Works</a>
+                <a href="/VoiceGenius/Dashboard.html" class="border-transparent text-blue-600 block pl-3 pr-4 py-2 text-base font-medium">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 overflow-hidden">
+        <div class="hero-shape w-3/4 h-3/4 top-24 -right-1/4"></div>
+        <div class="hero-shape w-1/2 h-1/2 -left-1/4 top-48"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-8">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold font-merriweather mb-6">
+                        Transform Your <span class="gradient-text">Outbound Calls</span> with AI
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Generate personalized call personas and scripts that convert. Our AI-powered platform helps you connect with customers more effectively.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="/VoiceGenius/Dashboard.html" class="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300">
+                            Get Started
+                        </a>
+                        <a href="#how-it-works" class="px-8 py-4 bg-transparent border border-blue-600 text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-all duration-300">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0">
+                    <div class="relative">
+                        <div class="bg-blue-100 rounded-2xl shadow-xl p-8 floating">
+                            <div class="bg-white rounded-lg p-4 shadow-md mb-4">
+                                <h3 class="text-lg font-bold mb-2">System Prompt:</h3>
+                                <p class="text-gray-700">You are a Sales Development Representative at a cutting-edge tech company. Your expertise lies in identifying pain points and offering tailored solutions.</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 shadow-md">
+                                <h3 class="text-lg font-bold mb-2">Call Script Example:</h3>
+                                <p class="text-gray-700 mb-2"><span class="font-bold">Opening:</span> "Hello, I'm reaching out because I noticed your company has been growing rapidly..."</p>
+                                <p class="text-gray-700"><span class="font-bold">Objection Handling:</span> "I understand concerns about implementation. Let me explain how our onboarding team makes this process seamless..."</p>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-purple-100 rounded-full"></div>
+                        <div class="absolute -top-4 -left-4 w-16 h-16 bg-blue-50 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center card-hover">
+                    <div class="h-16 w-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI-Generated Personas</h3>
+                    <p class="text-gray-600">Create detailed call personas tailored to your specific industry and target audience.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center card-hover">
+                    <div class="h-16 w-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Dynamic Scripts</h3>
+                    <p class="text-gray-600">Generate compelling call scripts with effective openings, objection handling, and closings.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center card-hover">
+                    <div class="h-16 w-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Personalization Options</h3>
+                    <p class="text-gray-600">Customize caller name, gender, language, and role to match your company needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold font-merriweather">
+                    Powerful <span class="gradient-text">Features</span>
+                </h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    Our AI-powered platform provides everything you need to create effective outbound call campaigns.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-item bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Analytics Dashboard</h3>
+                    <p class="text-gray-600">Track call performance, conversion rates, and identify areas for improvement.</p>
+                </div>
+                
+                <div class="feature-item bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Campaign Scheduling</h3>
+                    <p class="text-gray-600">Set up and schedule call campaigns in advance to optimize timing and efficiency.</p>
+                </div>
+                
+                <div class="feature-item bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Customizable Templates</h3>
+                    <p class="text-gray-600">Choose from a variety of pre-built templates or create your own custom scripts.</p>
+                </div>
+                
+                <div class="feature-item bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="h-12 w-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Team Collaboration</h3>
+                    <p class="text-gray-600">Share scripts and personas with your team for consistent messaging.</p>
+                </div>
+                
+                <div class="feature-item bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="h-12 w-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Script Library</h3>
+                    <p class="text-gray-600">Access a growing library of proven call scripts for different industries and scenarios.</p>
+                </div>
+                
+                <div class="feature-item bg-white rounded-xl shadow-md p-6 card-hover">
+                    <div class="h-12 w-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Real-time Optimization</h3>
+                    <p class="text-gray-600">Our AI continuously learns and improves your scripts based on performance data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold font-merriweather">
+                    How <span class="gradient-text">It Works</span>
+                </h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                    Generate powerful personas and scripts in just a few simple steps.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="h-16 w-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-blue-600">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Upload Your Content</h3>
+                    <p class="text-gray-600">
+                        Upload audio files, PDFs, or text documents containing your product information, value propositions, and customer pain points.
+                    </p>
+                </div>
+                
+                <div class="card-hover bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="h-16 w-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-purple-600">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">AI Generates Persona</h3>
+                    <p class="text-gray-600">
+                        Our AI analyzes your content and creates a comprehensive persona with detailed call scripts optimized for conversion.
+                    </p>
+                </div>
+                
+                <div class="card-hover bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="h-16 w-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-green-600">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Customize & Deploy</h3>
+                    <p class="text-gray-600">
+                        Customize your persona with specific attributes and deploy it to your outbound calling system for immediate use.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action Section -->
+    <section id="cta" class="py-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold font-merriweather mb-4">
+                    Ready to Transform Your Sales Calls?
+                </h2>
+                <p class="text-xl text-white opacity-90 max-w-3xl mx-auto mb-8">
+                    Join thousands of companies already using VoiceGenius AI to increase their conversion rates and improve customer engagement.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="/VoiceGenius/Dashboard.html" class="px-8 py-4 bg-white text-blue-600 font-bold rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-300">
+                        Get Started Free
+                    </a>
+                    <a href="/VoiceGenius/coming-soon.html" class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-300">
+                        Schedule Demo
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white bg-opacity-10 rounded-xl p-8 backdrop-blur-sm">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold mb-2">30%</h3>
+                        <p class="text-white opacity-80">Average increase in conversion rates</p>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold mb-2">15,000+</h3>
+                        <p class="text-white opacity-80">AI-generated call scripts</p>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold mb-2">500+</h3>
+                        <p class="text-white opacity-80">Happy customers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-1">
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-xl">VG</span>
+                            </div>
+                            <div class="absolute bottom-0 right-0 h-3 w-3 bg-purple-500 rounded-full"></div>
+                        </div>
+                        <span class="ml-2 text-xl font-bold gradient-text">VoiceGenius AI</span>
+                    </div>
+                    <p class="mt-4 text-gray-300">
+                        Revolutionizing outbound calls with AI-powered personas and scripts.
+                    </p>
+                    <div class="mt-6 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <span class="sr-only">Twitter</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <span class="sr-only">LinkedIn</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">Careers</a></li>
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">Blog</a></li>
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">Press</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">Documentation</a></li>
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">Help Center</a></li>
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">API Reference</a></li>
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">Community</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">Terms of Service</a></li>
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">Cookie Policy</a></li>
+                        <li><a href="/VoiceGenius/coming-soon.html" class="text-gray-300 hover:text-white">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2025 VoiceGenius AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Custom JS -->
+    <script src="/VoiceGenius/js/home.js"></script>
+</body>
+</html>            

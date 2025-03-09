@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   // API Configuration
-  const API_BASE_URL = 'http://localhost:8000'; // Change this to your actual API URL
+  const API_BASE_URL = 'https://voicegeniusai.onrender.com'; // Change this to your actual API URL
   
   // DOM Elements
   const dashboardSection = document.getElementById('dashboard-section');
